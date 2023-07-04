@@ -109,8 +109,6 @@ def game():
             print(bOrW(num1))
             used1 += num1
             level = numBar(used1, max_num)
-            if level == "level 0":
-                break
             print(level)
         else:
             num2 = int(getpass.getpass(prompt=f"Enter a number: "))
@@ -121,11 +119,19 @@ def game():
             print(bOrW(num2))
             used2 += num2
             level = numBar(used2, max_num)
-            if level == "level 0":
-                break
             print(level)
 
         if current_player == 1:
+            num2 = int(getpass.getpass(prompt=f"Enter a number: "))
+            if used2 == max_num:
+                num2 = 0
+            elif num2 > max_num - used2:
+                num2 = max_num - used2
+            print(bOrW(num2))
+            used2 += num2
+            level = numBar(used2, max_num)
+            print(level)
+        else:
             num1 = int(getpass.getpass(prompt=f"Enter a number: "))
             if used1 == max_num:
                 num1 = 0
@@ -134,16 +140,6 @@ def game():
             print(bOrW(num1))
             used1 += num1
             level = numBar(used1, max_num)
-            print(level)
-        else:
-            num2 = int(getpass.getpass(prompt=f"Enter a number: "))
-            if used2 == max_num:
-                num2 = 0
-            elif num2 > max_num - used2:
-                num2 = max_num - used2
-            print(bOrW(num2))
-            used2 += num2
-            level = numBar(used2, max_num)
             print(level)
 
 
