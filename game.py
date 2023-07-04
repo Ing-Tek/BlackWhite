@@ -3,9 +3,12 @@ import getpass
 def roundCount(current_round):
     current_round += 1
 
-def playerTurn(current_player):
-    return 2 if current_player == 1 else 1
-    
+def playerTurn(current_round, last_winner):
+    if current_round == 1:
+        return 1
+    else:
+        return last_winner
+
 def bOrW(num):
     return "-------------\n흑" if num < 10 else "-------------\n백"
 
@@ -28,19 +31,19 @@ def roundWinner(num1, num2, point1, point2):
         point1 += 1
         print("score is " + str(point1) + " : " + str(point2))
         print("---------------Round End---------------\n\n")
-        return point1, point2
+        return point1, point2, 1
     elif num2 > num1:
         print("Player 2 wins the round!")
         point2 += 1
         print("score is " + str(point1) + " : " + str(point2))
         print("---------------Round End---------------\n\n")
-        return point1, point2
+        return point1, point2, 2
     else:
         print("Draw!")
         print("score is " + str(point1) + " : " + str(point2))
         print("---------------Round End---------------\n\n")
-        return point1, point2
-    
+        return point1, point2, 0
+
 def gameWinner(point1, point2, current_round, bonus_round=False):
     if bonus_round:
         if current_round == 3:
@@ -79,7 +82,7 @@ def gameWinner(point1, point2, current_round, bonus_round=False):
             return False
         else:
             return True
-    
+
 def game():
     current_round = 1
     current_player = 1
@@ -89,12 +92,14 @@ def game():
     point2 = 0
     max_num = 99
     bonus_round = False
+    last_winner = 1
+    last_winner_save = last_winner
     roundLog = {}
 
     while True:
         print("Round:", current_round)
         print("Player", current_player, "turn")
-        
+
         if current_player == 1:
             num1 = int(getpass.getpass(prompt=f"Enter a number: "))
             if used1 == max_num:
@@ -120,8 +125,6 @@ def game():
                 break
             print(level)
 
-        current_player = playerTurn(current_player)
-
         if current_player == 1:
             num1 = int(getpass.getpass(prompt=f"Enter a number: "))
             if used1 == max_num:
@@ -143,7 +146,14 @@ def game():
             level = numBar(used2, max_num)
             print(level)
 
-        point1, point2 = roundWinner(num1, num2, point1, point2)
+
+        print(f"{num2}")
+        point1, point2, last_winner = roundWinner(num1, num2, point1, point2)
+        if last_winner == 0:
+            last_winner = last_winner_save
+        else:
+            last_winner_save = last_winner
+        current_player = playerTurn(current_round, last_winner)
         roundLog[current_round] = [f"player1 : {num1} / {max_num - used1}", f"player2 : {num2} / {max_num - used2}", f"score {point1} : {point2}"]
 
         if gameWinner(point1, point2, current_round, bonus_round) == 11:
@@ -155,6 +165,7 @@ def game():
             max_num = 33
             bonus_round = True
         elif not gameWinner(point1, point2, current_round, bonus_round):
+            last_winner = 1 if point1 > point2 else 2
             for round in roundLog:
                 print(f"round {round}: {roundLog[round]}")
             break
