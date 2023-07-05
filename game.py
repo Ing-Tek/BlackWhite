@@ -1,8 +1,5 @@
 import getpass
 
-def roundCount(current_round):
-    current_round += 1
-
 def bOrW(num):
     return "-------------\n흑" if num < 10 else "-------------\n백"
 
