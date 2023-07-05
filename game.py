@@ -3,12 +3,6 @@ import getpass
 def roundCount(current_round):
     current_round += 1
 
-def playerTurn(current_round, last_winner):
-    if current_round == 1:
-        return 1
-    else:
-        return last_winner
-
 def bOrW(num):
     return "-------------\n흑" if num < 10 else "-------------\n백"
 
