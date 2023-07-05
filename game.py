@@ -1,6 +1,6 @@
 import getpass
 
-def bOrW(num):
+def b_or_w(num):
     return "-------------\n흑" if num < 10 else "-------------\n백"
 
 def numBar(used_num, max_num=99):
@@ -97,7 +97,7 @@ def game():
                 num1 = 0
             elif num1 > max_num - used1:
                 num1 = max_num - used1
-            print(bOrW(num1))
+            print(b_or_w(num1))
             used1 += num1
             level = numBar(used1, max_num)
             print(level)
@@ -107,7 +107,7 @@ def game():
                 num2 = 0
             elif num2 > max_num - used2:
                 num2 = max_num - used2
-            print(bOrW(num2))
+            print(b_or_w(num2))
             used2 += num2
             level = numBar(used2, max_num)
             print(level)
@@ -118,7 +118,7 @@ def game():
                 num2 = 0
             elif num2 > max_num - used2:
                 num2 = max_num - used2
-            print(bOrW(num2))
+            print(b_or_w(num2))
             used2 += num2
             level = numBar(used2, max_num)
             print(level)
@@ -128,7 +128,7 @@ def game():
                 num1 = 0
             elif num1 > max_num - used1:
                 num1 = max_num - used1
-            print(bOrW(num1))
+            print(b_or_w(num1))
             used1 += num1
             level = numBar(used1, max_num)
             print(level)
