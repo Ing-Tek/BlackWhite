@@ -41,7 +41,7 @@ Welcome to BlackWhite! This game challenges your number selection skills and str
 
 ## File Description
 
-- `number_game.py`: The main Python script that implements the Number Game. Run this file to start the game.
+- `game.py`: The main Python script that implements the Number Game. Run this file to start the game.
 
 - `README.md`: This file provides instructions and information about the game.
 
@@ -54,7 +54,7 @@ Welcome to BlackWhite! This game challenges your number selection skills and str
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 
-# BlackWhite
+# 흑과 백
 
 흑과 백 게임은 두 명의 플레이어가 정해진 범위 내에서 숫자를 선택하며 번갈아가며 진행하는 간단한 두 명용 게임입니다. 목표는 선택된 숫자에 기반하여 점수를 누적하고 최종 점수를 기준으로 승자를 결정하는 것입니다.
 
