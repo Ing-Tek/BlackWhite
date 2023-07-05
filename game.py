@@ -142,14 +142,12 @@ def game():
             level = numBar(used1, max_num)
             print(level)
 
-
-        print(f"{num2}")
         point1, point2, last_winner = roundWinner(num1, num2, point1, point2)
         if last_winner == 0:
             last_winner = last_winner_save
         else:
             last_winner_save = last_winner
-        current_player = playerTurn(current_round, last_winner)
+        current_player = last_winner
         roundLog[current_round] = [f"player1 : {num1} / {max_num - used1}", f"player2 : {num2} / {max_num - used2}", f"score {point1} : {point2}"]
 
         if gameWinner(point1, point2, current_round, bonus_round) == 11:
